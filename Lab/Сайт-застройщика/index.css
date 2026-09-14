@@ -34,7 +34,7 @@ header {
 }
 
 .navig-h {
-    background-color: #040030c7;
+    background-color: #a8a5cf87;
     color: white;
     width: 100%;
     font-size: 18px;
@@ -42,6 +42,8 @@ header {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    position: absolute;
+    top: 0;
 }
 
 .log-Kvant {
@@ -85,6 +87,42 @@ header {
 }
 
 
+            /*меню для телефонов*/
+
+
+.menu-t {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 7px;
+    width: 30px;
+}
+
+.menu-t span {
+    width: 100%;
+    background-color: white;
+    height: 3px;
+    border-radius: 3px;
+
+}
+
+.menu-t span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+    
+}
+
+.menu-t span:nth-child(2) {
+    opacity: 0;
+
+}
+
+.menu-t span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+    
+}
+
+
+
                 /*Промо*/
 
 
@@ -123,6 +161,14 @@ header {
 }
 
 
+                /*Фон*/
+
+
+.bg-kv {
+    background-image: url("bg-kvant.svg");
+    background-position: center ;
+    background-size: cover;
+}
                 /*Предложения*/
 
 
@@ -257,6 +303,7 @@ header {
     border-radius: 10px 10px 5px 5px;
     width: 100%;
     background-color: #232040;
+    /*#363546*/
     width: 100%;
 }
 
