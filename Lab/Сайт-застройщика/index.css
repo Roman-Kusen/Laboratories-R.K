@@ -50,7 +50,7 @@ header {
     font-size: 30px;
 }
 
-.ul-h ul{
+.ul-h{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,17 +58,21 @@ header {
     list-style: none;
 }
 
-.ul-h ul li a {
+.ul-h a {
     text-decoration: none;
     color: white;
 }
 
-.call-h ul{
+.call-h{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
-    list-style: none;
+}
+
+.call-h a {
+    text-decoration: none;
+    color: white;
 }
 
 .go-req {
@@ -81,10 +85,6 @@ header {
 
 }
 
-.go-req a {
-    text-decoration: none;
-    color: white;
-}
 
 
             /*меню для телефонов*/
@@ -277,13 +277,11 @@ header {
     align-items: center;
 }
 
-.ar-p {
+
+.all-p{
     display: flex;
     align-items: center;
-    margin-left: 5px;
-}
-
-.all-p a{
+    gap: 5px;
     text-decoration: none;
     color: black;
     font-size: 20px;
@@ -546,16 +544,18 @@ header {
     color: #fff;
 }
 
+/*
 .ft-w {
     width: min(1180px, calc(100% - 40px));
     margin: auto;
 }
+    */
 
-.ft-top {
+.navig-ft {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 40px;
+    justify-content: space-around;
+
 }
 
 .log-Kvant-f {
@@ -577,19 +577,19 @@ header {
 }
 
 
-.ft-nav {
+.nav-ft {
     display: flex;
     gap: 30px;
 }
 
-.ft-nav a,
+.nav-ft a,
 .ft-c a {
     color: #d7dfdd;
     font-size: 18px;
     text-decoration: none;
 }
 
-.ft-nav a:hover,
+.nav-ft a:hover,
 .ft-c a:hover {
     color: #fff;
 }
