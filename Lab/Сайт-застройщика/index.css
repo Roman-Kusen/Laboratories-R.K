@@ -8,28 +8,38 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
-section{
+
+section {
     width: 100%;
     overflow: hidden;
     margin: 0 auto;
 }
+
 .cont {
     max-width: 1650px;
     padding: 0px 20px;
     width: 100%;
     margin: 0 auto;
 }
+
 h2 {
     font-size: 18px;
     font-weight: 500;
     color: #777777;
 }
 
+.s-tit p {
+    margin-top: 0.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
 
-                /*Шапка*/
+
+/*Шапка*/
 
 
 header {
+    position: relative;
     width: 100%;
 }
 
@@ -39,18 +49,30 @@ header {
     width: 100%;
     font-size: 18px;
     padding: 15px 0;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.cont-h {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    position: absolute;
-    top: 0;
 }
 
 .log-Kvant {
     font-size: 30px;
 }
 
-.ul-h{
+.nav-h {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ul-h {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,7 +85,7 @@ header {
     color: white;
 }
 
-.call-h{
+.call-dek {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -85,52 +107,146 @@ header {
 
 }
 
-
-
-            /*меню для телефонов*/
-
-
 .menu-t {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 7px;
-    width: 30px;
+    display: none;
+    background: none;
+    border: none;
 }
 
-.menu-t span {
+/*звонок для меню*/
+
+.call-mob {
+    display: none;
+}
+
+
+
+
+
+
+/*меню для телефонов*/
+
+@media(max-width: 1200px) {
+
+    .cont-h {
+        padding: 0 5%;
+        justify-content: space-between;
+    }
+
+    .nav-h {
+        display: none;
+        right: -100%;
+        z-index: 900;
+    }
+
+    .ul-h {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav-h .ul-h li {
+        text-align: center;
+        width: 80%;
+        padding: 20px 0;
+        border-bottom: 1px solid white;
+    }
+
+    .menu-t {
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 7px;
+        width: 30px;
+    }
+
+    .menu-t span {
+        width: 100%;
+        background-color: white;
+        height: 3px;
+        border-radius: 3px;
+    }
+
+    .call-dek {
+        display: none;
+    }
+
+    .overlay {
+    position: fixed;
+    z-index: 700;
+    top: 0;
+    right: 0;
+    left: 0;
     width: 100%;
-    background-color: white;
-    height: 3px;
-    border-radius: 3px;
-
-}
-
-.menu-t span:nth-child(1) {
-    transform: translateY(10px) rotate(45deg);
-    
-}
-
-.menu-t span:nth-child(2) {
+    height: 100vh;
+    background-color: #0000006d;
     opacity: 0;
-
-}
-
-.menu-t span:nth-child(3) {
-    transform: translateY(-10px) rotate(-45deg);
-    
+    visibility: hidden;
 }
 
 
 
-                /*Промо*/
+    /*open*/
 
+    button.menu-t.open {
+        position: fixed;
+        right: 20px;
+    }
 
-.s-pr {
+    .menu-t.open span:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+
+    }
+
+    .menu-t.open span:nth-child(2) {
+        opacity: 0;
+
+    }
+
+    .menu-t.open span:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+
+    }
+
+    /*nav-header*/
+
+    .nav-h.open {
+        display: block;
+        position: fixed;
+        width: 65%;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        padding: 80px 0 0 0;
+        background-color: #a8a5cf;
+    }
+
+    .call-mob {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin-top: 1rem;
+    }
+
+    .overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
 
 }
 
-.bag-pr{
+
+
+
+
+
+/*Промо*/
+
+
+.s-pr {}
+
+.bag-pr {
     background-image: url("promo.jpg");
     background-size: cover;
     height: 700px;
@@ -139,6 +255,7 @@ header {
 .cont-pr {
     height: 100%;
 }
+
 .promo-grid {
     width: 100%;
     height: 100%;
@@ -161,15 +278,16 @@ header {
 }
 
 
-                /*Фон*/
+/*Фон*/
 
 
 .bg-kv {
     background-image: url("bg-kvant.svg");
-    background-position: center ;
+    background-position: center;
     background-size: cover;
 }
-                /*Предложения*/
+
+/*Предложения*/
 
 
 .great-deals {
@@ -182,6 +300,19 @@ header {
     margin: -50px auto 0;
 }
 
+.vis-hid {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    /*clip: rect(0, 0, 0, 0);*/
+    white-space: nowrap;
+    border: 0;
+}
+
 .card-deals {
     display: flex;
     padding: 30px 20px 45px;
@@ -191,14 +322,20 @@ header {
 
 .dl-1 {
     background-image: url("deal/deal-1.svg");
+    background-position: right center;
+    background-size: cover;
 }
 
 .dl-2 {
     background-image: url("deal/deal-2.svg");
+    background-position: right center;
+    background-size: cover;
 }
 
 .dl-3 {
     background-image: url("deal/deal-3.svg");
+    background-position: right center;
+    background-size: cover;
 }
 
 .deal {
@@ -208,7 +345,7 @@ header {
 }
 
 
-                    /*Преимущества*/
+/*Преимущества*/
 
 
 
@@ -219,14 +356,10 @@ header {
 .gr-adv {
     display: grid;
     grid-template-columns: 1fr 2fr;
+    gap: 30px;
     align-items: center;
 }
 
-.s-tit p{
-    margin-top: 0.5rem;
-    font-size: 32px;
-    font-weight: 700;
-}
 
 .card-ad {
     display: grid;
@@ -245,7 +378,7 @@ header {
 
 }
 
-.ad-i img{
+.ad-i img {
     height: 50px;
 }
 
@@ -258,7 +391,7 @@ header {
 }
 
 
-                /*Проекты*/
+/*Проекты*/
 
 .s-pj {
     background-color: #f3f3f88c;
@@ -278,7 +411,7 @@ header {
 }
 
 
-.all-p{
+.all-p {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -288,6 +421,7 @@ header {
     font-weight: 500;
 
 }
+
 .grid-p {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -295,9 +429,10 @@ header {
 }
 
 .c-p1 {
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     border-radius: 10px 10px 5px 5px;
     width: 100%;
     background-color: #232040;
@@ -305,15 +440,41 @@ header {
     width: 100%;
 }
 
-.im-zk img{
+/*Срок сдачи*/
+.deadline {
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    border-radius: 0.5em;
+    padding: 0.5em 1.2em;
+    color: black;
+    font-size: 1rem;
+    font-weight: 500;
+    left: 1.5rem;
+    top: 1rem;
+}
+
+.im-zk img {
     border-radius: 10px;
     width: 100%;
+    height: auto;
+    object-fit: cover
+}
+
+.d-p {
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    flex: 1;
+    padding: 1.5em;
 }
 
 .nam-loc {
-    padding: 24px;
     color: white;
+    margin-bottom: 1rem;
 }
+
 .n-zk {
     font-size: 22px;
     font-weight: 700;
@@ -321,18 +482,18 @@ header {
 }
 
 .d-p p {
-    font-weight: 500;
+
     /*color: #3e3e3e;*/
 }
 
-        /*Описание к проекту*/
+/*Описание к проекту*/
 
 
 .k-p {
     display: flex;
     justify-content: space-between;
     gap: 30px;
-    padding: 24px;
+    margin: 0.5em 0;
     color: white;
     font-size: 20px;
     font-weight: 500;
@@ -356,20 +517,33 @@ header {
     gap: 5px;
 }
 
+.d-more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    text-decoration: none;
+    padding: 0.8em 1.6em;
+    background-color: white;
+    border-radius: 10px;
+    color: #232040;
+}
 
-                    /*Контакты*/
+
+/*Контакты*/
 
 
 .gr-c {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
-.s-tit-c p{
+.s-tit-c p {
     color: white;
     max-width: 600px;
     margin-top: 0.5rem;
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: 700;
 }
 
@@ -394,6 +568,7 @@ header {
     font-size: 20px;
     color: white;
 }
+
 .s-req {
     background-image: url("b-cont\ \(3\).jpg");
     background-position: center;
@@ -412,7 +587,7 @@ header {
     font-family: Arial, sans-serif;
 }
 
-.f-cont h2 {
+.f-cont h3 {
     margin: 0 0 10px;
     color: #172a28;
     font-size: 28px;
@@ -435,6 +610,7 @@ header {
 .f-gr input {
     width: 100%;
     height: 52px;
+    margin-top: 1rem;
     padding: 0 15px 0 25px;
     border: 1px solid #dfe4e2;
     border-radius: 15px;
@@ -522,7 +698,7 @@ header {
         border-radius: 12px;
     }
 
-    .f-cont h2 {
+    .f-cont h3 {
         font-size: 24px;
     }
 
@@ -565,7 +741,7 @@ header {
     text-decoration: none;
 }
 
-.log-Kvant-f  {
+.log-Kvant-f {
     font-size: 30px;
 
 }
@@ -623,56 +799,164 @@ header {
     color: #0c2421;
 }
 
-.ft-line {
-    height: 1px;
-    margin: 32px 0 20px;
-    background: rgba(255,255,255,.12);
-}
-
-.ft-bot {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-
-@media (max-width: 900px) {
-    .ft-top {
-        flex-wrap: wrap;
-    }
-
-    .ft-nav {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-    }
-}
 
 @media (max-width: 600px) {
     .ft {
         padding: 35px 0 20px;
     }
 
-    .ft-w {
-        width: calc(100% - 30px);
-    }
-
-    .ft-top {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .ft-nav {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        width: 100%;
-        gap: 15px;
-    }
 
     .ft-c {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
     }
 
+}
+
+
+
+
+/*Адаптивность*/
+
+
+@media(max-width: 1200px) {
+
+    /*Общие*/
+    h2 {
+        font-size: 16px;
+        font-weight: 500;
+        color: #777777;
+    }
+
+    .s-tit p {
+        margin-top: 0.4rem;
+        font-size: 1.5rem;
+    }
+
+    /*Контакты заголовок*/
+
+    .s-tit-c p {
+        margin-top: 0.4rem;
+        font-size: 1.5rem;
+    }
+
+
+    /*Преимущества*/
+
+
+    .gr-adv {
+        grid-template-columns: 1fr 1.5fr;
+    }
+
+    .card-ad {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .adv {
+        gap: 20px;
+        height: 230px;
+        border-left: none;
+        border-bottom: 3px solid #293579;
+    }
+
+    .grid-p {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /*Подвал*/
+
+    .navig-ft {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .nav-ft .ul-h {
+        flex-direction: row;
+    }
+}
+
+@media(max-width: 768px) {
+    .gr-adv {
+        grid-template-columns: 1fr;
+    }
+
+    .p-h {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+}
+
+@media(max-width: 468px) {
+    .great-deals {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        width: 300px;
+    }
+
+    .gr-adv {
+        grid-template-columns: 1fr;
+    }
+
+    .card-ad {
+        grid-template-columns: 1fr;
+    }
+
+    .adv {
+        flex-direction: row;
+        height: auto;
+        border-bottom: none;
+    }
+
+    /*Рамки градиенты для преимуществ*/
+
+    .adv1-line {
+        border-bottom: 3px solid;
+        border-image: linear-gradient(to right, #293579, #7bbcfe) 1;
+    }
+
+    .adv2-line {
+        border-bottom: 3px solid;
+        border-image: linear-gradient(to left, #293579, #7bbcfe) 1;
+    }
+
+    .adv3-line {
+        border-bottom: 3px solid;
+        border-image: linear-gradient(to right, #293579, #7bbcfe) 1;
+    }
+
+    .adv4-line {
+        border-bottom: 3px solid;
+        border-image: linear-gradient(to left, #293579, #7bbcfe) 1;
+    }
+
+    /*Рамки градиенты для преимуществ*/
+
+    .ad-i img {
+        height: 40px;
+        width: 40px;
+    }
+
+    .grid-p {
+        grid-template-columns: 1fr;
+    }
+
+    .k-p {
+        gap: 10px;
+        font-size: 18px;
+    }
+
+    .gr-c {
+        grid-template-columns: 1fr;
+    }
+
+    /*Подвал*/
+
+    .navig-ft .ul-h {
+        flex-direction: column;
+        gap: 2rem;
+    }
 }
